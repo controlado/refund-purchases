@@ -6,6 +6,8 @@ Reembolse o último campeão comprado na seleção de campeão! <br>
 Compre um campeão, selecione ele, reembolse-o e jogue com ele de graça <br>
 Esse é o meu terceiro projeto utilizando JavaScript :)
 
+<img src="https://github.com/controlado/refund-last-purchase/assets/71716568/18d0b945-6207-4fe9-a1a1-39a18f97786f" width="700" />
+
 </div>
 <br>
 
