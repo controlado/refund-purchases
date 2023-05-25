@@ -6,6 +6,8 @@ Refund the last champion bought in the champion selection! <br>
 Buy a champion, pick him, refund him and play with him for free <br>
 This is my third project using JavaScript :)
 
+<img src="https://github.com/controlado/refund-last-purchase/assets/71716568/18d0b945-6207-4fe9-a1a1-39a18f97786f" width="700" />
+
 </div>
 <br>
 
