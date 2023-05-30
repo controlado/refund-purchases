@@ -27,7 +27,7 @@ export class Store {
      */
     async refundLastChampion(purchaseHistory) {
         const champions = purchaseHistory.filter(purchase => purchase.inventoryType === "CHAMPION")
-        if (champions.length === 0) { console.debug("jogador não possui compras de campeões"); return }
+        if (champions.length === 0) { return }
 
         const body = {
             accountId: this.summoner.accountId,

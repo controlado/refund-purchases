@@ -13,7 +13,7 @@ const buttonId = "refund-last-purchase"
 const plugin = {
     "name": "Refund Last Purchase",
     "url": "https://github.com/controlado/refund-last-purchase",
-    "version": 1.0,
+    "version": "1.0.1",
 }
 
 function onMutation() {
@@ -51,6 +51,6 @@ function onMutation() {
 }
 
 window.addEventListener("load", () => {
-    console.debug(plugin.name, "feito com carinho pelo Balaclava#1912")
+    console.debug(`${plugin.name}: coded by Balaclava#1912`)
     utils.routineAddCallback(onMutation, ["bottom-right-buttons"])
 })
