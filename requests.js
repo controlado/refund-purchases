@@ -1,4 +1,5 @@
 import axios from "https://cdn.skypack.dev/axios"
+import utils from "../_utils"
 
 /**
  * @author
@@ -6,6 +7,40 @@ import axios from "https://cdn.skypack.dev/axios"
  * Discord: Balaclava#1912 (854886148455399436)    
  * GitHub: https://github.com/controlado
  */
+
+export async function sendNotification(notification) {
+    const { participants } = await getChampionSelectParticipants()
+    const { cid } = participants[0]
+    const requestParams = {
+        method: "POST",
+        headers: {
+            "accept": "application/json",
+            "content-type": "application/json"
+        },
+        body: JSON.stringify(
+            {
+                body: notification,
+                type: "celebration"
+            }
+        )
+    }
+    const endpoint = `/lol-chat/v1/conversations/${cid}/messages`
+    const response = await fetch(endpoint, requestParams)
+    return await response.json()
+}
+
+export async function getChampionSelectParticipants() {
+    const authToken = btoa(`riot:${utils.riotclient_auth}`)
+    const requestParams = {
+        method: "GET",
+        headers: {
+            Authorization: `Basic ${authToken}`
+        }
+    }
+    const url = `https://127.0.0.1:${utils.riotclient_port}/chat/v5/participants/champ-select`
+    const response = await fetch(url, requestParams)
+    return await response.json()
+}
 
 export class Store {
     constructor() {
@@ -65,9 +100,9 @@ export class Store {
      */
     async request(method, endpoint, requestBody = undefined) {
         const requestParams = {
-            "method": method,
-            "headers": {
-                "Authorization": `Bearer ${this.token}`
+            method: method,
+            headers: {
+                Authorization: `Bearer ${this.token}`
             }
         }
         if (requestBody) { requestParams.data = requestBody }

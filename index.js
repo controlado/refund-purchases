@@ -1,5 +1,5 @@
 import utils from "../_utils"
-import { Store } from "./requests"
+import { Store, sendNotification } from "./requests"
 
 /**
  * @author
@@ -30,8 +30,11 @@ function onMutation() {
         buyChampionButton.setAttribute("disabled", "true")
         try {
             const purchaseHistory = await store.getPurchaseHistory()
-            await store.refundLastChampion(purchaseHistory)
+            const response = await store.refundLastChampion(purchaseHistory)
+            const responseData = JSON.stringify(response.data)
+            await sendNotification(responseData)
         }
+        catch (error) { await sendNotification(error.message) }
         finally { buyChampionButton.removeAttribute("disabled") }
     }
     buyChampionButton.onmouseenter = () => { buyChampionButton.textContent = "Refund Last Champion" }
