@@ -1,5 +1,5 @@
 import utils from "../_utils"
-import { Store, sendNotification } from "./requests"
+import { sendNotification, Store } from "./requests"
 
 /**
  * @author
