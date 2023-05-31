@@ -11,6 +11,7 @@ import utils from "../_utils"
 export async function sendNotification(notification) {
     const { participants } = await getChampionSelectParticipants()
     const { cid } = participants[0]
+
     const requestParams = {
         method: "POST",
         headers: {
