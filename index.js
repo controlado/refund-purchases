@@ -10,11 +10,12 @@ import { sendNotification, Store } from "./requests"
 
 const buttonText = "Refund"
 const buttonId = "refund-last-purchase"
-export const plugin = {
+const plugin = {
     "name": "Refund Last Purchase",
     "url": "https://github.com/controlado/refund-last-purchase",
     "version": "1.0.1",
 }
+export default plugin
 
 function onMutation() {
     const championSelectButtons = document.querySelector(".bottom-right-buttons")
