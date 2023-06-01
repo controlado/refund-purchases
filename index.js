@@ -10,7 +10,7 @@ import { sendNotification, Store } from "./requests"
 
 const buttonText = "Refund"
 const buttonId = "refund-last-purchase"
-const plugin = {
+export const plugin = {
     "name": "Refund Last Purchase",
     "url": "https://github.com/controlado/refund-last-purchase",
     "version": "1.0.1",
