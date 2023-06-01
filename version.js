@@ -5,9 +5,8 @@
  * GitHub: https://github.com/controlado
  */
 
-const plugin = {
+export const plugin = {
     "name": "Refund Last Purchase",
     "url": "https://github.com/controlado/refund-last-purchase",
     "version": "1.0.1",
 }
-export default plugin
