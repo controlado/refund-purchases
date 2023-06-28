@@ -1,4 +1,4 @@
-import utils from "../_utils"
+import * as utils from "../controladoUtils"
 import { sendNotification, Store } from "./requests"
 
 /**
@@ -18,7 +18,7 @@ const plugin = {
 
 function onMutation() {
     const championSelectButtons = document.querySelector(".bottom-right-buttons")
-    if (!championSelectButtons || utils.phase !== "ChampSelect" || document.getElementById(buttonId)) { return }
+    if (!championSelectButtons || document.getElementById(buttonId)) { return }
 
     const store = new Store()
 
@@ -46,14 +46,14 @@ function onMutation() {
     buyChampionButton.style.position = "absolute"
     buyChampionButton.style.display = "flex"
 
-    // compatibilidade com o plugin https://github.com/teisseire117/league-loader-plugins/tree/main/plugins/dodge_button
-    const dodgeContainer = document.getElementsByClassName("dodge-button-container")
-    if (dodgeContainer.length > 0) { buyChampionButton.style.bottom = "96px" }
-
-    championSelectButtons.parentNode.insertBefore(buyChampionButton, championSelectButtons)
+    utils.sleep(1000).then(() => {
+        const dodgeContainer = document.getElementsByClassName("dodge-button-container") // compatibilidade com o plugin teisseire117/league-loader-plugins/dodge_button
+        if (dodgeContainer.length > 0) { sendNotification("Identified dodge-button!"); buyChampionButton.style.bottom = "96px" }
+        championSelectButtons.parentNode.insertBefore(buyChampionButton, championSelectButtons)
+    })
 }
 
 window.addEventListener("load", () => {
     console.debug(`${plugin.name}: Report bugs to Balaclava#1912`)
-    utils.routineAddCallback(onMutation, ["bottom-right-buttons"])
+    utils.addRoutines(onMutation)
 })

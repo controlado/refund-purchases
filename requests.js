@@ -1,5 +1,5 @@
 import axios from "https://cdn.skypack.dev/axios"
-import utils from "../_utils"
+import * as utils from "../controladoUtils"
 
 /**
  * @author
@@ -31,14 +31,14 @@ export async function sendNotification(notification) {
 }
 
 export async function getChampionSelectParticipants() {
-    const authToken = btoa(`riot:${utils.riotclient_auth}`)
+    const authToken = btoa(`riot:${utils.clientAuth}`)
     const requestParams = {
         method: "GET",
         headers: {
             Authorization: `Basic ${authToken}`
         }
     }
-    const url = `https://127.0.0.1:${utils.riotclient_port}/chat/v5/participants/champ-select`
+    const url = `https://127.0.0.1:${utils.clientPort}/chat/v5/participants/champ-select`
     const response = await fetch(url, requestParams)
     return await response.json()
 }
