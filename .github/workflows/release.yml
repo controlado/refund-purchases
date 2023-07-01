@@ -3,6 +3,9 @@ name: Criar Release
 on:
   - push
 
+env:
+  RELEASE_FILENAME: "refund-last-purchase.zip"
+
 jobs:
   release:
     runs-on: ubuntu-latest
@@ -15,9 +18,7 @@ jobs:
         run: curl -o controladoUtils.js https://raw.githubusercontent.com/controlado/pengu-plugins/master/controladoUtils.js
 
       - name: Criar arquivo ZIP
-        run: |
-          REPO_NAME=$(basename "${{ github.repository }}")
-          zip -r "$REPO_NAME.zip" .
+        run: zip -r ${{ env.RELEASE_FILENAME }} .
 
       - name: Criar Release
         id: create_release
@@ -36,6 +37,6 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: ./${{ github.repository }}.zip
-          asset_name: ${{ github.repository }}.zip
+          asset_path: ./${{ env.RELEASE_FILENAME }}
+          asset_name: ${{ env.RELEASE_FILENAME }}
           asset_content_type: application/zip
