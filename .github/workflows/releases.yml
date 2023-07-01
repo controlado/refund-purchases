@@ -3,7 +3,6 @@ name: Criar Release
 on:
   push:
   repository_dispatch:
-    types: [repository-updated]
 
 env:
   PLUGIN_NAME: "refund-last-purchase"
