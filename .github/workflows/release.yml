@@ -16,7 +16,7 @@ jobs:
 
       - name: Criar arquivo ZIP
         run: |
-          REPO_NAME=${{ github.repository }}
+          REPO_NAME=$(basename "${{ github.repository }}")
           zip -r "$REPO_NAME.zip" .
 
       - name: Criar Release
