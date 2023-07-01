@@ -18,7 +18,7 @@ jobs:
         run: mkdir ${{ env.PLUGIN_NAME }}
 
       - name: Mover arquivos do repositório para a pasta criada
-        run: find . -maxdepth 1 ! -name ${{ env.PLUGIN_NAME }}/ ! -name ".git" ! -name ".github" -exec mv {} ${{ env.PLUGIN_NAME }}/ \;
+        run: find . -maxdepth 1 ! -name "." ! -name ".git" ! -name ".github" -exec mv {} ${{ env.PLUGIN_NAME }}/ \;
 
       - name: Baixar arquivo de dependência
         run: curl -o controladoUtils.js https://raw.githubusercontent.com/controlado/pengu-plugins/master/controladoUtils.js
