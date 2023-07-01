@@ -8,8 +8,15 @@ import { sendNotification, Store } from "./requests"
  * GitHub: https://github.com/controlado
  */
 
-const buttonText = "Refund"
-const buttonId = "refund-last-purchase"
+const buttonConfig = {
+    id: "refund-last-purchase",
+    defaultMode: "refund",
+    text: {
+        default: "Refund",
+        refund: "Refund Last Champion",
+        buy: "Buy Last Refunded Champion",
+    }
+}
 const plugin = {
     "name": "Refund Last Purchase",
     "url": "https://github.com/controlado/refund-last-purchase",
@@ -18,36 +25,51 @@ const plugin = {
 
 function onMutation() {
     const championSelectButtons = document.querySelector(".bottom-right-buttons")
-    if (!championSelectButtons || document.getElementById(buttonId)) { return }
+    if (!championSelectButtons || document.getElementById(buttonConfig.id)) { return }
 
     const store = new Store()
 
     const buyChampionButton = document.createElement("lol-uikit-flat-button")
-    buyChampionButton.textContent = buttonText
-    buyChampionButton.id = buttonId
+    buyChampionButton.setAttribute("style", "right: 19px; bottom: 57px; align-items: flex-end; position: absolute; display: flex;")
+    buyChampionButton.textContent = buttonConfig.text.default
+    buyChampionButton.mode = buttonConfig.defaultMode
+    buyChampionButton.id = buttonConfig.id
 
     buyChampionButton.onclick = async () => {
         buyChampionButton.setAttribute("disabled", "true")
+        const purchaseHistory = await store.getPurchaseHistory()
         try {
-            const purchaseHistory = await store.getPurchaseHistory()
-            const response = await store.refundLastChampion(purchaseHistory)
-            const responseData = JSON.stringify(response.data)
-            await sendNotification(responseData)
+            if (buyChampionButton.mode === "refund") {
+                const response = await store.refundLastChampion(purchaseHistory)
+                await sendNotification(`Refund: ${response.statusText} (${response.status})`)
+            } else {
+                const item = purchaseHistory.find(item => item.currencyType === "IP" && item.inventoryType === "CHAMPION" && item.refundabilityMessage === "ALREADY_REFUNDED")
+                const items = [
+                    {
+                        inventoryType: "CHAMPION",
+                        ipCost: item.amountSpent,
+                        itemId: item.itemId,
+                        quantity: 1,
+
+                    },
+                ]
+                const requestBody = { "accountId": store.summoner.accountId, "items": items }
+                const response = await store.request("POST", "/storefront/v3/purchase", requestBody)
+                await sendNotification(`Purchase: ${response.statusText} (${response.status})`)
+            }
         }
         catch (error) { await sendNotification(error.message) }
         finally { buyChampionButton.removeAttribute("disabled") }
     }
-    buyChampionButton.onmouseenter = () => { buyChampionButton.textContent = "Refund Last Champion" }
-    buyChampionButton.onmouseleave = () => { buyChampionButton.textContent = buttonText }
+    buyChampionButton.oncontextmenu = () => {
+        buyChampionButton.mode = buyChampionButton.mode === "refund" ? "buy" : "refund"
+        buyChampionButton.textContent = buttonConfig.text[buyChampionButton.mode]
+    }
+    buyChampionButton.onmouseenter = () => { buyChampionButton.textContent = buttonConfig.text[buyChampionButton.mode] }
+    buyChampionButton.onmouseleave = () => { buyChampionButton.textContent = buttonConfig.text.default }
 
-    buyChampionButton.style.right = "19px"
-    buyChampionButton.style.bottom = "57px"
-    buyChampionButton.style.alignItems = "flex-end"
-    buyChampionButton.style.position = "absolute"
-    buyChampionButton.style.display = "flex"
-
-    sleep(1000).then(() => {
-        const dodgeContainer = document.getElementsByClassName("dodge-button-container") // compatibilidade com o plugin teisseire117/league-loader-plugins/dodge_button
+    sleep(1000).then(() => { // @teisseire117 - league-loader-plugins/dodge_button
+        const dodgeContainer = document.getElementsByClassName("dodge-button-container")
         if (dodgeContainer.length > 0) { sendNotification("Identified dodge-button!"); buyChampionButton.style.bottom = "96px" }
         championSelectButtons.parentNode.insertBefore(buyChampionButton, championSelectButtons)
     })
