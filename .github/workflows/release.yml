@@ -18,7 +18,7 @@ jobs:
         run: curl -o controladoUtils.js https://raw.githubusercontent.com/controlado/pengu-plugins/master/controladoUtils.js
 
       - name: Criar arquivo ZIP
-        run: zip -r ${{ env.RELEASE_FILENAME }} .
+        run: zip -r ${{ env.RELEASE_FILENAME }} . -x ".git/*" ".github/*"
 
       - name: Criar Release
         id: create_release
