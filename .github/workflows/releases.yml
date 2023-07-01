@@ -18,7 +18,7 @@ jobs:
         run: mkdir ${{ env.PLUGIN_NAME }}
 
       - name: Mover arquivos do repositório para a pasta criada
-        run: mv -r w* ${{ env.PLUGIN_NAME }}/
+        run: mv -r * ${{ env.PLUGIN_NAME }}/
 
       - name: Baixar arquivo de dependência
         run: curl -o controladoUtils.js https://raw.githubusercontent.com/controlado/pengu-plugins/master/controladoUtils.js
