@@ -2,7 +2,6 @@ name: Criar Release
 
 on:
   - push
-  - pull_request
 
 jobs:
   release:
@@ -13,6 +12,7 @@ jobs:
         uses: actions/checkout@v2
 
       - name: Criar Release
+        id: create_release
         uses: actions/create-release@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -30,7 +30,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          upload_url: ${{ steps.release.outputs.upload_url }}
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
           asset_path: ./controladoUtils.js
           asset_name: controladoUtils.js
           asset_content_type: application/javascript
