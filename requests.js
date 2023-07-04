@@ -1,10 +1,10 @@
 import { StoreBase, credentials } from "../controladoUtils"
 
 /**
- * @author
- * Nome: Yan Gabriel    
- * Discord: Balaclava#1912 (854886148455399436)    
- * GitHub: https://github.com/controlado
+ * @name refund-last-purchase
+ * @author feminismo (balaclava)
+ * @description Play with a champion for free! 🐧
+ * @link https://github.com/controlado/refund-last-purchase
  */
 
 export async function sendNotification(notification) {

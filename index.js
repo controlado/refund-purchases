@@ -2,10 +2,10 @@ import { sleep, addRoutines } from "../controladoUtils"
 import { sendNotification, Store } from "./requests"
 
 /**
- * @author
- * Nome: Yan Gabriel    
- * Discord: Balaclava#1912 (854886148455399436)    
- * GitHub: https://github.com/controlado
+ * @name refund-last-purchase
+ * @author feminismo (balaclava)
+ * @description Play with a champion for free! 🐧
+ * @link https://github.com/controlado/refund-last-purchase
  */
 
 const buttonConfig = {
