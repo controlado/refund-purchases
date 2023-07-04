@@ -1,10 +1,10 @@
 import { StoreBase, credentials } from "../controladoUtils"
 
 /**
+ * @author balaclava
  * @name refund-last-purchase
- * @author feminismo (balaclava)
- * @description Play with a champion for free! 🐧
  * @link https://github.com/controlado/refund-last-purchase
+ * @description Play with a champion for free! 🐧
  */
 
 export async function sendNotification(notification) {

@@ -2,10 +2,10 @@ import { sleep, addRoutines } from "../controladoUtils"
 import { sendNotification, Store } from "./requests"
 
 /**
+ * @author balaclava
  * @name refund-last-purchase
- * @author feminismo (balaclava)
- * @description Play with a champion for free! 🐧
  * @link https://github.com/controlado/refund-last-purchase
+ * @description Play with a champion for free! 🐧
  */
 
 const buttonConfig = {
