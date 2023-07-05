@@ -1,4 +1,4 @@
-import { addRoutines, sleep } from "../controladoUtils";
+import { addRoutines, Champion, sleep } from "../controladoUtils";
 import { sendNotification, Store } from "./requests";
 
 /**
@@ -45,16 +45,7 @@ function onMutation() {
       }
       else {
         const item = purchaseHistory.find(item => item.currencyType === "IP" && item.inventoryType === "CHAMPION" && item.refundabilityMessage === "ALREADY_REFUNDED");
-        const items = [
-          {
-            inventoryType: "CHAMPION",
-            ipCost: item.amountSpent,
-            itemId: item.itemId,
-            quantity: 1,
-          },
-        ];
-        const requestBody = { "accountId": store.summoner.accountId, "items": items };
-        const response = await store.request("POST", "/storefront/v3/purchase", requestBody);
+        const response = await store.buyChampions(new Champion(item.itemId, item.amountSpent));
         await sendNotification(`Purchase: ${response.statusText} (${response.status})`);
       }
     }
