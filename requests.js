@@ -19,17 +19,17 @@ export async function sendNotification(notification) {
   const { participants } = await getChampionSelectParticipants();
   const { cid } = participants[0];
 
-  const requestBody = { body: notification, type: "celebration" };
+  const body = { body: notification, type: "celebration" };
   const endpoint = `/lol-chat/v1/conversations/${cid}/messages`;
-  const response = await request("POST", endpoint, { body: requestBody });
+  const response = await request("POST", endpoint, { body });
   return await response.json();
 }
 
 async function getChampionSelectParticipants() {
   const authToken = btoa(`riot:${credentials.auth}`);
-  const requestHeaders = { Authorization: `Basic ${authToken}` };
+  const headers = { Authorization: `Basic ${authToken}` };
   const url = `https://127.0.0.1:${credentials.port}/chat/v5/participants/champ-select`;
-  const response = await request("GET", url, { headers: requestHeaders });
+  const response = await request("GET", url, { headers });
   return await response.json();
 }
 
