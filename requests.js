@@ -1,4 +1,4 @@
-import { credentials, request, StoreBase } from "../controladoUtils";
+import { StoreBase } from "../controladoUtils";
 
 /**
  * @author balaclava
@@ -6,32 +6,6 @@ import { credentials, request, StoreBase } from "../controladoUtils";
  * @link https://github.com/controlado/refund-last-purchase
  * @description Play with a champion for free! 🐧
  */
-
-/**
- * Envia uma notificação no chat da seleção de campeões.
- *
- * @async
- * @function
- * @param {string} notification - Notificação que vai ser enviada.
- * @return {Promise<Response>} Resposta da requisição.
- */
-export async function sendNotification(notification) {
-  const { participants } = await getChampionSelectParticipants();
-  const { cid } = participants[0];
-
-  const body = { body: notification, type: "celebration" };
-  const endpoint = `/lol-chat/v1/conversations/${cid}/messages`;
-  const response = await request("POST", endpoint, { body });
-  return await response.json();
-}
-
-async function getChampionSelectParticipants() {
-  const authToken = btoa(`riot:${credentials.auth}`);
-  const headers = { Authorization: `Basic ${authToken}` };
-  const url = `https://127.0.0.1:${credentials.port}/chat/v5/participants/champ-select`;
-  const response = await request("GET", url, { headers });
-  return await response.json();
-}
 
 export class Store extends StoreBase {
   /**

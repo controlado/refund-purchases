@@ -1,0 +1,7 @@
+.buy-champion-button {
+    right: 19px;
+    bottom: 57px;
+    align-items: flex-end;
+    position: absolute;
+    display: flex;
+}
