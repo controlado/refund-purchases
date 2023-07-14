@@ -55,7 +55,7 @@ function onMutation() {
   buyChampionButton.onmouseleave = () => buyChampionButton.textContent = buttonConfig.text.default;
 
   sleep(1000).then(() => { // @teisseire117 - league-loader-plugins/dodge_button
-    if (document.querySelector(".dodge-button-container")?.length > 0) {
+    if (document.querySelector(".dodge-button-container")) {
       sendChatNotification("Identified dodge-button!");
       buyChampionButton.style.bottom = "96px";
     }
