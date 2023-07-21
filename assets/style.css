@@ -1,7 +1,7 @@
-.buy-champion-button {
-    right: 19px;
-    bottom: 57px;
-    align-items: flex-end;
+.dropdown-refund-items {
+    height: fit-content;
     position: absolute;
-    display: flex;
+    bottom: 65px;
+    right: 20px;
+    width: 20%;
 }

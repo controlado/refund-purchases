@@ -6,7 +6,7 @@ on:
     types: [ utils-updated ]
 
 env:
-  PLUGIN_NAME: "refund-last-purchase"
+  PLUGIN_NAME: "refund-purchases"
 
 jobs:
   release:
