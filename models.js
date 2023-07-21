@@ -1,4 +1,4 @@
-import { StoreBase } from "../controladoUtils";
+import { StoreBase } from "../_controladoUtils";
 
 /**
  * @author balaclava

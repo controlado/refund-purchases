@@ -24,7 +24,7 @@ Open the available refunds menu and select the item you want to refund!
 ## Dependencies
 
 [Pengu Loader 1.0.4](https://github.com/PenguLoader/PenguLoader) (or any higher version) <br>
-[controladoUtils.js](https://github.com/controlado/pengu-plugins/blob/master/controladoUtils.js) (must be in the plugins folder)
+[_controladoUtils.js](https://github.com/controlado/pengu-plugins/blob/master/_controladoUtils.js) (must be in the plugins folder)
 
 ## Installation
 
@@ -37,7 +37,7 @@ The structure should look something like this:
 📂 Pengu Loader
 └── 📂 plugins
     ├── 📂 @default
-    ├── 📄 controladoUtils.js
+    ├── 📄 _controladoUtils.js
     └── 📂 refund-purchases
         ├── 📄 index.js
         ├── 📄 models.js
