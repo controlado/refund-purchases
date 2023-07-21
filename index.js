@@ -26,6 +26,7 @@ async function setupElements(selector, attribute) {
   if (document.querySelector(".dodge-button-container")) {
     sendChatNotification("Dodge button detected!");
     dropdown.element.style.bottom = "96px";
+    dropdown.element.style.width = "260px";
   }
 
   container.appendChild(dropdown.element);
