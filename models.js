@@ -48,7 +48,7 @@ export class Assets {
 
 export class Dropdown {
     green = "#33CA72";
-    yellow = "#CAA833";
+    yellow = "#F9BD0A";
     red = "#CA3336";
 
     constructor(store, assets, transactions) {
