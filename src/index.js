@@ -40,7 +40,6 @@ window.addEventListener("load", () => {
       dropdown.refreshOptions();
     }
   });
-  addRoutines(() => {
-    setupElements("div.champion-select", "refund-purchases");
-  });
+  addRoutines(() => setupElements("div.champion-select", "refund-purchases"));
+  console.debug("refund-purchases: Report bugs to Balaclava#1912");
 });
