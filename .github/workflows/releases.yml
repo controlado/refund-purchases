@@ -1,7 +1,7 @@
 name: Criar Release
 
 env:
-  PLUGIN_NAME: "refund-purchases"
+  plugin_name: "refund-purchases"
 
 on:
   workflow_dispatch:
