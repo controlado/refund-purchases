@@ -1,4 +1,4 @@
-import { StoreBase } from "../_controladoUtils";
+import { StoreBase } from "https://cdn.skypack.dev/balaclava-utils@latest";
 
 /**
  * @author balaclava
@@ -54,6 +54,11 @@ export class Dropdown {
     constructor(store, assets, transactions) {
         this.element = document.createElement("lol-uikit-framed-dropdown");
         this.element.classList.add("dropdown-refund-items");
+
+        // TODO: Wait shadowRoot to be attached
+        // this.placeholder = this.element.shadowRoot.querySelector("div > dt > div");
+        // this.element.onmouseenter = () => { this.placeholder.textContent = "Refund Items"; };
+        // this.element.onmouseleave = () => { this.placeholder.textContent = undefined; };
 
         this.store = store;
         this.assets = assets;
