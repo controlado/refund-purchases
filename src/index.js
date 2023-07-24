@@ -1,4 +1,4 @@
-import { addRoutines, addCssLink, linkEndpoint, sendChatNotification, sleep } from "https://cdn.skypack.dev/balaclava-utils@latest";
+import { addRoutines, linkEndpoint, sendChatNotification, sleep } from "https://cdn.skypack.dev/balaclava-utils@latest";
 import { Store, Assets, Dropdown } from "./models";
 import "./assets/style.css";
 
@@ -33,7 +33,6 @@ async function setupElements(selector, attribute) {
 }
 
 window.addEventListener("load", () => {
-  addCssLink("https://cdn.skypack.dev/refund-purchases@latest/dist/assets/index.css");
   linkEndpoint("/lol-inventory/v1/wallet", async parsedEvent => {
     if (parsedEvent.eventType === "Update") {
       await store.wait();
