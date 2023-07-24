@@ -1,4 +1,4 @@
-import { StoreBase } from "https://cdn.skypack.dev/balaclava-utils@latest";
+import { waitShadowRoot, StoreBase } from "https://cdn.skypack.dev/balaclava-utils@latest";
 
 /**
  * @author balaclava
@@ -51,18 +51,14 @@ export class Dropdown {
     yellow = "#F9BD0A";
     red = "#CA3336";
 
-    constructor(store, assets, transactions) {
+    constructor(text, store, assets) {
         this.element = document.createElement("lol-uikit-framed-dropdown");
         this.element.classList.add("dropdown-refund-items");
 
-        // TODO: Wait shadowRoot to be attached
-        // this.placeholder = this.element.shadowRoot.querySelector("div > dt > div");
-        // this.element.onmouseenter = () => { this.placeholder.textContent = "Refund Items"; };
-        // this.element.onmouseleave = () => { this.placeholder.textContent = undefined; };
-
+        this.text = text;
         this.store = store;
         this.assets = assets;
-        this.transactions = transactions;
+        this.transactions = null;
     }
 
     addOption(text, callback, { color } = {}) {
@@ -89,6 +85,23 @@ export class Dropdown {
                 { color }
             );
         }
+
+        waitShadowRoot(this.element).then(shadowRoot => {
+            if (!shadowRoot.querySelector("#controlado-placeholder")) {
+                const placeholderContainer = shadowRoot.querySelector(".ui-dropdown-current");
+                const placeholder = this.getNewPlaceholder();
+                placeholderContainer.appendChild(placeholder);
+            }
+        });
+    }
+
+    getNewPlaceholder() {
+        const placeholder = document.createElement("div");
+        placeholder.classList.add("ui-dropdown-current-content");
+        placeholder.style = "overflow: visible; text-align: end;";
+        placeholder.id = "controlado-placeholder";
+        placeholder.innerText = this.text;
+        return placeholder;
     }
 
     async refreshOptions() {

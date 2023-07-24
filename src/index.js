@@ -11,7 +11,7 @@ import "./assets/style.css";
 
 const store = new Store();
 const assets = new Assets();
-const dropdown = new Dropdown(store, assets);
+const dropdown = new Dropdown("Transactions", store, assets);
 
 async function setupElements(selector, attribute) {
   const container = document.querySelector(selector);
