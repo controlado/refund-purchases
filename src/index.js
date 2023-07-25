@@ -1,5 +1,6 @@
 import { addRoutines, linkEndpoint, sendChatNotification, sleep } from "https://cdn.skypack.dev/balaclava-utils@latest";
 import { Store, Assets, Dropdown } from "./models";
+import { version } from "../package.json";
 import "./assets/style.css";
 
 /**
@@ -40,5 +41,5 @@ window.addEventListener("load", () => {
     }
   });
   addRoutines(() => setupElements("div.champion-select", "refund-purchases"));
-  console.debug("refund-purchases: Report bugs to Balaclava#1912");
+  console.debug(`refund-purchases(${version}): Report bugs to Balaclava#1912`);
 });
