@@ -25,6 +25,7 @@ async function setupElements(selector, attribute) {
 
   await sleep(1000); // @teisseire117 - league-loader-plugins/dodge_button
   if (document.querySelector(".dodge-button-container")) {
+    console.debug("refund-purchases: Dodge button detected!");
     sendChatNotification("Dodge button detected!");
     dropdown.element.style.bottom = "96px";
     dropdown.element.style.width = "260px";
@@ -36,6 +37,7 @@ async function setupElements(selector, attribute) {
 window.addEventListener("load", () => {
   linkEndpoint("/lol-inventory/v1/wallet", async parsedEvent => {
     if (parsedEvent.eventType === "Update") {
+      console.debug("refund-purchases: Refreshing dropdown...");
       await store.wait();
       dropdown.refreshOptions();
     }
