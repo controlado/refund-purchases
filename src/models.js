@@ -64,7 +64,13 @@ export class Dropdown {
     addOption(text, callback, { color } = {}) {
         const option = document.createElement("lol-uikit-dropdown-option");
         option.setAttribute("slot", "lol-uikit-dropdown-option");
-        option.addEventListener("click", callback);
+        option.addEventListener("click", () => {
+            Toast.promise(callback(), {
+                loading: `Refunding ${text}...`,
+                success: `Refunded ${text}!`,
+                error: `Error refunding ${text}!`
+            });
+        });
         option.innerText = text;
 
         option.shadowRoot?.
