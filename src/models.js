@@ -36,7 +36,7 @@ export class Assets {
         this.items = Object.values(responseData);
 
         for (const item of this.items) {
-            item.id = item.isBase ? item.splashPath.split("/")[5] : item.id;
+            item.id = item.isBase ? Math.floor(item.id / 1000) : item.id;
         }
     }
 
