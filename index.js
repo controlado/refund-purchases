@@ -5,4 +5,4 @@
  * @description Play with a champion or skin for free! 🐧
  */
 
-import "https://cdn.skypack.dev/refund-purchases@latest?min";
+import "https://cdn.jsdelivr.net/npm/refund-purchases@latest?min";

@@ -1,4 +1,4 @@
-import { waitShadowRoot, StoreBase } from "https://cdn.skypack.dev/balaclava-utils@latest";
+import { waitShadowRoot, StoreBase } from "https://cdn.jsdelivr.net/npm/balaclava-utils@latest";
 
 /**
  * @author balaclava

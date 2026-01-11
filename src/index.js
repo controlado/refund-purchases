@@ -1,4 +1,4 @@
-import { addRoutines, linkEndpoint, sendChatNotification, sleep } from "https://cdn.skypack.dev/balaclava-utils@latest";
+import { addRoutines, linkEndpoint, sendChatNotification, sleep } from "https://cdn.jsdelivr.net/npm/balaclava-utils@latest";
 import { Store, Assets, Dropdown } from "./models";
 import { version } from "../package.json";
 import "./assets/style.css";
