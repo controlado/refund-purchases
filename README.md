@@ -3,7 +3,8 @@
 # `🐧` Refund Purchases <br>
 
 [![wakatime](https://wakatime.com/badge/github/controlado/refund-purchases.svg)](https://wakatime.com/@programador/projects/mllzfbmkas)
-[![discord](https://img.shields.io/badge/Discord-%235865F2.svg?style=flat&logo=discord&logoColor=white&color=blue)](https://discordapp.com/users/854886148455399436) <br>
+[![discord](https://img.shields.io/badge/Discord-%235865F2.svg?style=flat&logo=discord&logoColor=white&color=blue)](https://discordapp.com/users/854886148455399436)
+[![Monthly jsDelivr requests](https://img.shields.io/jsdelivr/npm/hm/refund-purchases?style=flat&color=blue&label=jsDelivr)](https://www.jsdelivr.com/package/npm/refund-purchases) <br>
 ![languages](https://img.shields.io/badge/Documentation-gray)
 [![english](https://img.shields.io/badge/-English-blue)](README.md)
 [![portuguese](https://img.shields.io/badge/-Português%20Brasileiro-blue)](README.br.md)
@@ -42,3 +43,17 @@ The structure should look something like this:
         ├── 📃 README.br.md
         └── 📀 index.js
 ```
+
+## Star History
+
+<div align="center">
+
+<a href="https://www.star-history.com/?repos=controlado/refund-purchases&amp;type=date">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/chart?repos=controlado/refund-purchases&amp;type=date&amp;theme=dark">
+    <source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/chart?repos=controlado/refund-purchases&amp;type=date">
+    <img src="https://api.star-history.com/chart?repos=controlado/refund-purchases&amp;type=date" width="700" alt="Star history for refund-purchases">
+  </picture>
+</a>
+
+</div>
